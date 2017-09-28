@@ -1,0 +1,25 @@
+able: 1
+
+# this is a comment
+
+value: 2  # this is also a comment
+
+name: 'this is a string'
+
+version: "this is also a string"
+
+description: "this is a
+multiline
+string"
+
+version: "this overwrites the previous value of version"
+
+'an item'
+
+4356  # another item
+
+object: [
+  1 2 3
+  'some text'
+  key: 'value'
+]
