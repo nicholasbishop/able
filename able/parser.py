@@ -20,14 +20,9 @@ def get_parser():
         return tatsu.compile(grammar.read())
 
 
-def parse_string(string):
+def parse(string, rule_name=None):
     parser = get_parser()
-    return parser.parse(string, semantics=Semantics())
-
-
-def parse_file(rfile):
-    parser = get_parser()
-    return parse_string(rfile.read())
+    return parser.parse(string, rule_name=rule_name, semantics=Semantics())
 
 
 def parse_cli_args():
@@ -40,5 +35,5 @@ def main():
     cli_args = parse_cli_args()
     parser = get_parser()
     with open(cli_args.path) as rfile:
-        ast = parse_file(rfile)
+        ast = parse(rfile.read())
     pprint.pprint(ast)
