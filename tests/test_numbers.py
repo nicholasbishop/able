@@ -16,8 +16,20 @@ class TestNumbers(unittest.TestCase):
     def test_negative_one(self):
         self.assertEqual(parse('-1'), -1)
 
+    def test_positive_one(self):
+        self.assertEqual(parse('+1'), 1)
+
     def test_float(self):
         self.assertEqual(parse('1.5'), 1.5)
 
     def test_negative_float(self):
         self.assertEqual(parse('-1.5'), -1.5)
+
+    def test_positive_float(self):
+        self.assertEqual(parse('+1.5'), +1.5)
+
+    def test_hex(self):
+        self.assertEqual(parse('0xff'), 255)
+
+    def test_binary(self):
+        self.assertEqual(parse('0b111'), 7)

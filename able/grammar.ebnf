@@ -3,11 +3,29 @@
 
 start = 'able' ':' '1' @:implicit_list $ ;
 
-float = /[+-]?\d+\.\d*/ ;
+sign = '+' | '-' ;
 
-decimal_integer = /[+-]?\d+/ ;
+DECIMAL = '.' ;
 
-number = float | decimal_integer;
+DECIMAL_FRAGMENT = /[0-9]+/ ;
+
+HEX_FRAGMENT = /[0-9a-fA-F]+/ ;
+
+BINARY_FRAGMENT = /[01]+/ ;
+
+hex_prefix = '0x' | '0X' ;
+
+binary_prefix = '0b' | '0B' ;
+
+float = [sign] DECIMAL_FRAGMENT DECIMAL DECIMAL_FRAGMENT ;
+
+hex_integer = [sign] hex_prefix HEX_FRAGMENT ;
+
+binary_integer = [sign] binary_prefix BINARY_FRAGMENT ;
+
+decimal_integer = [sign] DECIMAL_FRAGMENT ;
+
+number = float | hex_integer | binary_integer | decimal_integer ;
 
 double_quoted_string = '"' @:/[^"]+/ '"' ;
 

@@ -6,10 +6,16 @@ import tatsu
 
 class Semantics(object):
     def decimal_integer(self, ast):
-        return int(ast)
+        return int(''.join(ast))
+
+    def hex_integer(self, ast):
+        return int(''.join(ast), 16)
+
+    def binary_integer(self, ast):
+        return int(''.join(ast), 2)
 
     def float(self, ast):
-        return float(ast)
+        return float(''.join(ast))
 
     def pair(self, ast):
         key, value = ast
