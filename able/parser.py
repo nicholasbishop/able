@@ -4,6 +4,8 @@ import pprint
 
 import tatsu
 
+_PARSER = None
+
 class Semantics(object):
     def decimal_integer(self, ast):
         return int(''.join(ast))
@@ -22,11 +24,18 @@ class Semantics(object):
         return (key, value)
 
 
-def get_parser():
+def read_grammar():
     script_path = os.path.dirname(os.path.realpath(__file__))
     grammar_path = os.path.join(script_path, 'grammar.ebnf')
     with open(grammar_path) as grammar:
-        return tatsu.compile(grammar.read())
+        return grammar.read()
+
+
+def get_parser():
+    global _PARSER
+    if not _PARSER:
+        _PARSER = tatsu.compile(read_grammar())
+    return _PARSER
 
 
 def parse(string, rule_name=None):
