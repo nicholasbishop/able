@@ -12,3 +12,6 @@ class TestStrings(unittest.TestCase):
 
     def test_single_quoted(self):
         self.assertEqual(parse("'abc'"), 'abc')
+
+    def test_multiline_string(self):
+        self.assertEqual(parse('"a\nb\nc"'), 'a\nb\nc')
