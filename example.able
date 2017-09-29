@@ -22,4 +22,7 @@ object: [
   1 2 3
   'some text'
   key: 'value'
+  [
+    nested: ['object' ['even more nested']]
+  ]
 ]
