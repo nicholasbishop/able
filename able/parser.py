@@ -5,8 +5,11 @@ import pprint
 import tatsu
 
 class Semantics(object):
-    def number(self, ast):
+    def decimal_integer(self, ast):
         return int(ast)
+
+    def float(self, ast):
+        return float(ast)
 
     def pair(self, ast):
         key, value = ast

@@ -3,8 +3,11 @@
 
 start = 'able' ':' '1' @:implicit_list $ ;
 
-# TODO: add a bunch more number types
-number = /\d+/ ;
+float = /[+-]?\d+\.\d*/ ;
+
+decimal_integer = /[+-]?\d+/ ;
+
+number = float | decimal_integer;
 
 double_quoted_string = '"' @:/[^"]+/ '"' ;
 
@@ -12,9 +15,9 @@ single_quoted_string = "'" @:/[^']+/ "'" ;
 
 string = double_quoted_string | single_quoted_string ;
 
-pair = @:/[\w]+/ ':' @:value;
+pair = @:/[\w]+/ ':' @:value ;
 
-value = number | string | pair | list;
+value = number | string | pair | list ;
 
 list = '[' @:{ value }* ']' ;
 
