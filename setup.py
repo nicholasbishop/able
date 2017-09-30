@@ -20,11 +20,12 @@ from setuptools import setup
 
 setup(
     name='able',
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/nicholasbishop/able',
     author='Nicholas Bishop',
     author_email='nicholasbishop@gmail.com',
     license='Apache 2.0',
     packages=['able'],
     install_requires=['TatSu~=4.2.3'],
+    package_data={'able': ['grammar.ebnf']},
 )
