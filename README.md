@@ -61,7 +61,9 @@ UTF-8, always.
   any whitespace can be used to separate items and commas are not used
   to separate items. The order of items in a list is significant. If
   the list contains pairs with duplicate keys, the later pair
-  overrides the earlier pair. Examples:
+  overrides the earlier pair. Client libraries should allow numeric
+  indexing into the list as well as string lookup. The latter only
+  applies to pair elements. Examples:
   
         []
         ['a' "b" 3]
