@@ -2,6 +2,7 @@ import argparse
 import os
 import pprint
 
+import lictionary
 import tatsu
 
 _PARSER = None
@@ -22,6 +23,12 @@ class Semantics(object):
     def pair(self, ast):
         key, value = ast
         return (key, value)
+
+    def list(self, ast):
+        return lictionary.Lictionary(*ast)
+
+    def implicit_list(self, ast):
+        return lictionary.Lictionary(*ast)
 
 
 def read_grammar():

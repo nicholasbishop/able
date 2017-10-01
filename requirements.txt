@@ -1,1 +1,2 @@
 TatSu~=4.2.3
+lictionary~=0.1.2

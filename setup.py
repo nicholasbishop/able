@@ -26,6 +26,6 @@ setup(
     author_email='nicholasbishop@gmail.com',
     license='Apache 2.0',
     packages=['able'],
-    install_requires=['TatSu~=4.2.3'],
+    install_requires=['TatSu~=4.2.3', 'lictionary~=0.1.2'],
     package_data={'able': ['grammar.ebnf']},
 )
