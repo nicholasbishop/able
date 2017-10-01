@@ -1,3 +1,5 @@
+"""Parser for the Able configuration format"""
+
 from __future__ import print_function
 
 import argparse
@@ -11,6 +13,10 @@ import tatsu
 _PARSER = None
 
 class Semantics(object):
+    """Convert parsed items into the appropriate type."""
+
+    # pylint: disable=missing-docstring,no-self-use
+
     def decimal_integer(self, ast):
         return int(''.join(ast))
 
@@ -35,13 +41,15 @@ class Semantics(object):
 
 
 class JSONEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, lictionary.Lictionary):
-            return obj.as_list()
-        return obj
+    """Specialize JSONEncoder to handle Lictionary."""
+    def default(self, o):  # pylint: disable=method-hidden
+        if isinstance(o, lictionary.Lictionary):
+            return o.as_list()
+        return JSONEncoder.default(self, o)
 
 
 def read_grammar():
+    """Read the contents of the Able grammar file"""
     script_path = os.path.dirname(os.path.realpath(__file__))
     grammar_path = os.path.join(script_path, 'grammar.ebnf')
     with open(grammar_path) as grammar:
@@ -49,18 +57,24 @@ def read_grammar():
 
 
 def get_parser():
-    global _PARSER
+    """Get an Able parser.
+
+    The parser is cached so repeated calls are fast.
+    """
+    global _PARSER  # pylint: disable=global-statement
     if not _PARSER:
         _PARSER = tatsu.compile(read_grammar())
     return _PARSER
 
 
 def parse(string, rule_name=None):
+    """Parse an Able string."""
     parser = get_parser()
     return parser.parse(string, rule_name=rule_name, semantics=Semantics())
 
 
 def parse_cli_args():
+    """Parse command-line arguments"""
     parser = argparse.ArgumentParser(description='parse an Able file')
     parser.add_argument('path')
     parser.add_argument('-j', '--to-json', action='store_true')
@@ -68,8 +82,8 @@ def parse_cli_args():
 
 
 def main():
+    """Entry point for 'python -m able'"""
     cli_args = parse_cli_args()
-    parser = get_parser()
     with open(cli_args.path) as rfile:
         ast = parse(rfile.read())
     if cli_args.to_json:
