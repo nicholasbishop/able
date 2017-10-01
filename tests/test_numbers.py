@@ -1,5 +1,6 @@
 # pylint: disable=missing-docstring
 
+import math
 import unittest
 
 import able
@@ -39,3 +40,17 @@ class TestNumbers(unittest.TestCase):
     def test_case(self):
         self.assertEqual(parse('0XA'), 10)
         self.assertEqual(parse('0B1'), 1)
+
+    def test_nan(self):
+        self.assertTrue(math.isnan(parse('nan')))
+        self.assertFalse(math.isnan(parse('1.0')))
+
+    def test_infinity(self):
+        inf = float('inf')
+        self.assertEqual(parse('inf'), inf)
+        self.assertEqual(parse('infinity'), inf)
+        self.assertEqual(parse('+infinity'), inf)
+        self.assertEqual(parse('+INFINITY'), inf)
+        self.assertEqual(parse('iNFiNiTY'), inf)
+        self.assertEqual(parse('-inf'), -inf)
+        self.assertEqual(parse('-infinity'), -inf)

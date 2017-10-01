@@ -17,7 +17,11 @@ hex_prefix = '0x' | '0X' ;
 
 binary_prefix = '0b' | '0B' ;
 
-float = [sign] DECIMAL_FRAGMENT DECIMAL DECIMAL_FRAGMENT ;
+numeric_float = [sign] DECIMAL_FRAGMENT DECIMAL DECIMAL_FRAGMENT ;
+
+infinity = /(?i)[+-]?inf(inity)?/ ;
+
+float = numeric_float | 'nan' | infinity ;
 
 hex_integer = [sign] hex_prefix HEX_FRAGMENT ;
 

@@ -25,13 +25,18 @@ UTF-8, always.
 
 - Numbers: integers and floats. Integers can be prefixed with `0x` for
   hex or `0b` for binary. Case does not matter; `0xabc` is the same as
-  `0XABC`. Floats must be numeric; nan/inf are not valid floats
-  (although they can be expressed as strings). Examples:
+  `0XABC`. In addition to normal numeric floats the special names
+  `nan` and `inf` can be used. `inf` can also be spelled
+  `infinity`. Again, case does not matter. Examples:
 
         42
         3.14
         0xff
         0b11001001
+        -inf
+        infinity
+        +INFINITY
+        nan
 
 - Strings: denoted by either a single quote or a double quote. Forward
   slash (`\`) is used for escaping special characters. Regular
