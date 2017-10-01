@@ -1,4 +1,7 @@
+from __future__ import print_function
+
 import argparse
+import json
 import os
 import pprint
 
@@ -31,6 +34,13 @@ class Semantics(object):
         return lictionary.Lictionary(*ast)
 
 
+class JSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, lictionary.Lictionary):
+            return obj.as_list()
+        return obj
+
+
 def read_grammar():
     script_path = os.path.dirname(os.path.realpath(__file__))
     grammar_path = os.path.join(script_path, 'grammar.ebnf')
@@ -53,6 +63,7 @@ def parse(string, rule_name=None):
 def parse_cli_args():
     parser = argparse.ArgumentParser(description='parse an Able file')
     parser.add_argument('path')
+    parser.add_argument('-j', '--to-json', action='store_true')
     return parser.parse_args()
 
 
@@ -61,4 +72,8 @@ def main():
     parser = get_parser()
     with open(cli_args.path) as rfile:
         ast = parse(rfile.read())
-    pprint.pprint(ast)
+    if cli_args.to_json:
+        print(json.dumps(ast, cls=JSONEncoder, indent=2,
+                         separators=(',', ': ')))
+    else:
+        pprint.pprint(ast)
