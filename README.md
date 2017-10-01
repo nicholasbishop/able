@@ -14,8 +14,8 @@ A quick example:
     ]
     
 The top-level of an Able file is an implicit list. The first item in
-the list must be a pair of `able: <version>`. Currently the only valid
-`<version>` is 1.
+the list must be a pair of `able: <version>`. The `able` string must
+be lower case. Currently the only valid `<version>` is 1.
 
 ## Encoding
 
@@ -24,8 +24,9 @@ UTF-8, always.
 ## Data types
 
 - Numbers: integers and floats. Integers can be prefixed with `0x` for
-  hex or `0b` for binary. Floats must be numeric; nan/inf are not
-  valid floats (although they can be expressed as strings). Examples:
+  hex or `0b` for binary. Case does not matter; `0xabc` is the same as
+  `0XABC`. Floats must be numeric; nan/inf are not valid floats
+  (although they can be expressed as strings). Examples:
 
         42
         3.14
