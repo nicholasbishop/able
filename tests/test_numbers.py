@@ -35,3 +35,7 @@ class TestNumbers(unittest.TestCase):
 
     def test_binary(self):
         self.assertEqual(parse('0b111'), 7)
+
+    def test_case(self):
+        self.assertEqual(parse('0XA'), 10)
+        self.assertEqual(parse('0B1'), 1)
