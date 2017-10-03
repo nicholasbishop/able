@@ -1,5 +1,7 @@
 @@grammar::Able
+@@comment_recovery :: True
 @@eol_comments :: /#([^\n]*?)$/
+@@parseinfo :: True
 
 start = 'able' ':' '1' @:implicit_list $ ;
 
