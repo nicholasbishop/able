@@ -1,5 +1,5 @@
 """Run able.parser.main"""
 
-from able import parser
+from able import util
 
-parser.main()
+util.main()

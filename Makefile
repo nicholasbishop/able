@@ -1,7 +1,10 @@
-all: lint test
+all: able/parser.py lint test
+
+able/parser.py: able/grammar.ebnf
+	python -m tatsu --outfile able/parser.py able/grammar.ebnf
 
 lint:
-	python -m pylint able setup.py tests
+	python -m pylint --ignore=parser.py able setup.py tests
 
 test:
 	python -m unittest discover

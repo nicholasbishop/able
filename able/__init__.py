@@ -1,3 +1,3 @@
 """Parser for the Able configuration format"""
 
-from able.parser import parse
+from able.util import parse
