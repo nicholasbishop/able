@@ -57,7 +57,7 @@ def read_grammar():
         return grammar.read()
 
 
-def parse(string, rule_name=None):
+def parse(string, rule_name='start'):
     """Parse an Able string."""
     return parser.AbleParser().parse(
         string, rule_name=rule_name, semantics=Semantics())
