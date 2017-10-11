@@ -12,7 +12,7 @@ import lictionary
 from able import parser
 
 
-class Semantics(object):
+class Semantics(parser.AbleSemantics):
     """Convert parsed items into the appropriate type."""
 
     # pylint: disable=missing-docstring,no-self-use
