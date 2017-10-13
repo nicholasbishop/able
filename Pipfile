@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+
 pylint = "*"
 yapf = "*"
 
@@ -12,3 +13,4 @@ yapf = "*"
 
 lictionary = "*"
 tatsu = "*"
+six = "*"
