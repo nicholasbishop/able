@@ -9,7 +9,7 @@ import pprint
 
 import lictionary
 
-from able import parser
+from able import parser, serializer
 
 
 class Semantics(parser.AbleSemantics):
@@ -61,6 +61,11 @@ def parse(string, rule_name='start'):
     """Parse an Able string."""
     return parser.AbleParser().parse(
         string, rule_name=rule_name, semantics=Semantics())
+
+
+def serialize(data):
+    """Format |data| in Able."""
+    return serializer.Serializer().serialize(data)
 
 
 def parse_cli_args():
