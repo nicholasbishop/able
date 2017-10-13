@@ -2,7 +2,6 @@
 
 A quick example:
 
-    able: 1
     key: 'value'
     'a multiline
     string'
@@ -13,9 +12,8 @@ A quick example:
       item3: 'the end'
     ]
     
-The top-level of an Able file is an implicit list. The first item in
-the list must be a pair of `able: <version>`. The `able` string must
-be lower case. Currently the only valid `<version>` is 1.
+The top-level of an Able file is an implicit list, meaning it isn't
+surrounded by square braces.
 
 ## Encoding
 
@@ -71,7 +69,7 @@ UTF-8, always.
         [key: 'value' 3.14]
         [key: 'value' key: 'this overrides the previous value]
 
-## Rational
+## Rationale
 
 Why another configuration format? I wasn't able to find an existing
 one that seemed quite right to me. I probably missed something; let me
@@ -93,15 +91,6 @@ represent lists / objects.
 Why is the top level of an Able file an implicit list? To reduce
 unnecessary indentation. Almost every configuration file is going to
 be a list anyway.
-
-Why does the file have to start with `able: 1`? Being able to identify
-a file's type from its contents rather than its extension can be
-useful. Starting with a "magic" string that is also human readable is
-a common choice in file formats.
-
-Why is the version an integer rather than, say, a semver string? To
-reduce typing. That's the first thing you write in any Able file,
-might as well make it short and simple.
 
 Why a list type but no map/hash/object type? To keep things simple and
 reduce unnecessary nesting.

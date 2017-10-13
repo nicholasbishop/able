@@ -43,8 +43,5 @@ class Serializer(object):
         self._output = ''
 
         # TODO
-        data['able'] = 1
-
-        # TODO
         self.serialize_map_inner(data)
         return self._output

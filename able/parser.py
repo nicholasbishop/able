@@ -79,9 +79,6 @@ class AbleParser(Parser):
 
     @tatsumasu()
     def _start_(self):  # noqa
-        self._token('able')
-        self._token(':')
-        self._token('1')
         self._implicit_list_()
         self.name_last_node('@')
         self._check_eof()
