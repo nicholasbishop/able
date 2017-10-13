@@ -20,7 +20,7 @@ from setuptools import setup
 
 setup(
     name='able',
-    version='0.1.2',
+    version='0.1.3',
     url='https://github.com/nicholasbishop/able',
     author='Nicholas Bishop',
     author_email='nicholasbishop@gmail.com',
